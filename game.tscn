@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://dbdrnrjvii2it"]
+[gd_scene load_steps=25 format=4 uid="uid://dbdrnrjvii2it"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hsu82"]
 [ext_resource type="PackedScene" uid="uid://bb3c305h4bq15" path="res://frog.tscn" id="1_vsc66"]
@@ -17,6 +17,7 @@
 [ext_resource type="FontFile" uid="uid://0q4v8qhes6n1" path="res://canvas/font/outline_font_cyan.png" id="9_kh4dt"]
 [ext_resource type="FontFile" uid="uid://bssko0pmlj5h8" path="res://canvas/font/small_font_gold.png" id="9_pjlc2"]
 [ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://button.tscn" id="12_f3bnq"]
+[ext_resource type="FontFile" uid="uid://bmbged4cjmm1u" path="res://canvas/font/small_font_red.png" id="15_7lq38"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="16_rakxa"]
 
 [sub_resource type="TileSet" id="TileSet_ryvvy"]
@@ -886,6 +887,16 @@ offset_top = 272.0
 offset_right = 516.0
 offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("9_pjlc2")
+theme_override_font_sizes/font_size = 64
+text = "Round Clear!"
+
+[node name="RoundClearLabelRed" type="Label" parent="RoundClear"]
+visible = false
+offset_left = 132.0
+offset_top = 272.0
+offset_right = 516.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("15_7lq38")
 theme_override_font_sizes/font_size = 64
 text = "Round Clear!"
 

@@ -57,7 +57,7 @@ var game_time
 var clear_delay = 0.0
 var lily_delay = 0.0
 var round_starting = false
-var round_won = false
+var round_state = 0
 var game_paused = false
 
 
@@ -84,7 +84,7 @@ func _ready():
 
 func _process(_delta):
 	var mouse = get_global_mouse_position()
-	if mouse.y >= 110 and !round_won:
+	if mouse.y >= 110 and round_state == 0:
 		if has_preview:
 			mouse.x = clamp(mouse.x, 0, w - w_cell)
 			mouse.y = clamp(mouse.y, 120, h + 120 - h_cell)
@@ -144,7 +144,7 @@ func start_round(restart : bool):
 	set_time(game_time)
 	set_lilypad_number(lily_count[level], false, restart)
 	place_flies(fly_count[level])
-	round_won = false
+	round_state = 0
 	round_starting = true
 	
 	# Set delay for pregame
@@ -178,8 +178,8 @@ func on_tick():
 	game_time -= 1;
 	if game_time < 0:
 		game_time = 0
-		print("Game over!")
 		game_timer.stop()
+		clear_round(2)
 	elif game_time > 0 and game_time % 5 == 0:
 		set_lilypad_number(1, true, false)
 	set_time(game_time)
@@ -255,7 +255,7 @@ func on_jump(old_cell, new_cell, x, y):
 func on_frog_done_catching(caught):
 	flies -= caught
 	if flies == 0:
-		clear_round()
+		clear_round(1)
 	else:
 		jump_timer.start()
 
@@ -378,16 +378,19 @@ func blink_message():
 	else:
 		clear_msg.visible = true
 		if clear_delay <= -2.0:
-			clear_msg.visible = false
-			round_timer.stop()
-			round_timer.timeout.disconnect(blink_message)
-			round_timer.timeout.connect(round_timer_tick)
-			start_round(false)
+			if round_state == 2:
+				get_tree().change_scene_to_file("res://main_menu.tscn")
+			else:
+				clear_msg.visible = false
+				round_timer.stop()
+				round_timer.timeout.disconnect(blink_message)
+				round_timer.timeout.connect(round_timer_tick)
+				start_round(false)
 
 
 # Prepare the game for the next round, after a win
-func clear_round():
-	round_won = true
+func clear_round(state : int):
+	round_state = state
 	has_preview = false
 	preview_lilypad.visible = false
 	jump_timer.stop()
@@ -397,6 +400,10 @@ func clear_round():
 	game_timer.timeout.disconnect(on_tick)
 	lily_timer.stop()
 	set_digits(0, 7, "static")
+	if state == 2:
+		for msg in clear_msg.get_children():
+			msg.text = "Game Over!"
+		clear_msg.get_child(4).visible = true
 	clear_delay = 0.5
 	round_timer.wait_time = 0.25
 	round_timer.start()
@@ -420,7 +427,7 @@ func on_menu_button_clicked(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				button_restart.visible = !round_won && !round_starting
+				button_restart.visible = (round_state == 0) && !round_starting
 				game_paused = true
 				pause_game(true)
 				for lily_no in no_lily:
