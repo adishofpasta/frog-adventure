@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://il545vcsxw34"
+path="res://.godot/imported/small_font_cyan.png-5e5cb9926231e11ed605eb62cce409e8.fontdata"
+
+[deps]
+
+source_file="res://canvas/font/small_font_cyan.png"
+dest_files=["res://.godot/imported/small_font_cyan.png-5e5cb9926231e11ed605eb62cce409e8.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

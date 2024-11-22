@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ctpm7uq7p1i1s"]
+
+[ext_resource type="PackedScene" uid="uid://nbhuycy7ei5i" path="res://fly_sprite.tscn" id="1_e5ub8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_gn46w"]
+radius = 14.0357
+
+[node name="Fly" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+
+[node name="FlySprite" parent="." instance=ExtResource("1_e5ub8")]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_gn46w")
+debug_color = Color(0.971187, 0, 0.449661, 0.42)

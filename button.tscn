@@ -1,0 +1,156 @@
+[gd_scene load_steps=23 format=3 uid="uid://7wvvqfe5r5e8"]
+
+[ext_resource type="Script" path="res://button.gd" id="1_tfftt"]
+[ext_resource type="Texture2D" uid="uid://cwxe7onf8qoux" path="res://canvas/button.png" id="2_halit"]
+[ext_resource type="Texture2D" uid="uid://dhomqnbkg4su4" path="res://canvas/button_pause.png" id="3_b8a8h"]
+[ext_resource type="Texture2D" uid="uid://disxspbv0dqrc" path="res://canvas/button_back2.png" id="3_mhtjl"]
+[ext_resource type="Texture2D" uid="uid://dg7j50yp36b2v" path="res://canvas/button_play.png" id="5_r2a6r"]
+[ext_resource type="Texture2D" uid="uid://c6dd0efdpd8f8" path="res://canvas/button_replay.png" id="6_yl83f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l8j3a"]
+atlas = ExtResource("2_halit")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54xix"]
+atlas = ExtResource("2_halit")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ko27f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l8j3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54xix")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_knxdw"]
+atlas = ExtResource("3_mhtjl")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5blt0"]
+atlas = ExtResource("3_mhtjl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xonqp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_knxdw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5blt0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebm4r"]
+atlas = ExtResource("3_b8a8h")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vrui"]
+atlas = ExtResource("3_b8a8h")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mx568"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebm4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vrui")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0vsh"]
+atlas = ExtResource("5_r2a6r")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnpjd"]
+atlas = ExtResource("5_r2a6r")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_eivdc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0vsh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnpjd")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lxkd"]
+atlas = ExtResource("6_yl83f")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l1cf7"]
+atlas = ExtResource("6_yl83f")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyuxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lxkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l1cf7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i38mh"]
+radius = 32.0
+
+[node name="Button" type="Node2D"]
+script = ExtResource("1_tfftt")
+
+[node name="Base" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_ko27f")
+
+[node name="Type" type="Node2D" parent="."]
+
+[node name="Back" type="AnimatedSprite2D" parent="Type"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_xonqp")
+
+[node name="Pause" type="AnimatedSprite2D" parent="Type"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_mx568")
+
+[node name="Play" type="AnimatedSprite2D" parent="Type"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_eivdc")
+
+[node name="Restart" type="AnimatedSprite2D" parent="Type"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_dyuxy")
+
+[node name="ButtonArea" type="Area2D" parent="."]
+
+[node name="ButtonCollision" type="CollisionShape2D" parent="ButtonArea"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_i38mh")
+
+[connection signal="input_event" from="ButtonArea" to="." method="on_click"]
+[connection signal="mouse_entered" from="ButtonArea" to="." method="on_focus"]
+[connection signal="mouse_exited" from="ButtonArea" to="." method="on_lose_focus"]

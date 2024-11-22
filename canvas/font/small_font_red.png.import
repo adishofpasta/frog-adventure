@@ -1,0 +1,25 @@
+[remap]
+
+importer="font_data_image"
+type="FontFile"
+uid="uid://bmbged4cjmm1u"
+path="res://.godot/imported/small_font_red.png-7051db173eb8c396dd98480ef97c540f.fontdata"
+
+[deps]
+
+source_file="res://canvas/font/small_font_red.png"
+dest_files=["res://.godot/imported/small_font_red.png-7051db173eb8c396dd98480ef97c540f.fontdata"]
+
+[params]
+
+character_ranges=PackedStringArray("0-127")
+kerning_pairs=PackedStringArray()
+columns=16
+rows=8
+image_margin=Rect2i(0, 0, 0, 0)
+character_margin=Rect2i(0, 0, 0, 0)
+ascent=0
+descent=0
+fallbacks=[]
+compress=true
+scaling_mode=2

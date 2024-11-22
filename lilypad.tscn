@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq4ekdhcvlajo"]
+
+[ext_resource type="Texture2D" uid="uid://bgb3aus5oxfir" path="res://canvas/lilypad.png" id="1_yu4vf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bgf8u"]
+radius = 29.0172
+
+[node name="Lilypad" type="CharacterBody2D"]
+
+[node name="Lilypad" type="Sprite2D" parent="."]
+texture = ExtResource("1_yu4vf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(1.14716, 0.920001)
+shape = SubResource("CircleShape2D_bgf8u")
