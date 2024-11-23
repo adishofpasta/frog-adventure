@@ -994,17 +994,6 @@ position = Vector2(410, 304)
 position = Vector2(-2, -2)
 shape = SubResource("CircleShape2D_uvava")
 
-[node name="FadeOut" type="ColorRect" parent="."]
-unique_name_in_owner = true
-visible = false
-z_index = 20
-offset_left = -64.0
-offset_top = -4.0
-offset_right = 649.0
-offset_bottom = 607.0
-mouse_filter = 2
-color = Color(0.113725, 0.14902, 0.235294, 1)
-
 [node name="StatusBarBorder" type="Node2D" parent="."]
 
 [node name="ColorRect2" type="ColorRect" parent="StatusBarBorder"]
