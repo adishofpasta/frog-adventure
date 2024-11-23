@@ -864,46 +864,58 @@ visible = false
 
 [node name="gold" type="Label" parent="HowTo"]
 offset_left = 136.0
-offset_top = 24.0
 offset_right = 776.0
-offset_bottom = 624.0
+offset_bottom = 600.0
 theme_override_fonts/font = ExtResource("1_64f08")
 theme_override_font_sizes/font_size = 64
 text = "How to play"
 
 [node name="cyan" type="Label" parent="HowTo"]
 offset_left = 8.0
-offset_top = 16.0
 offset_right = 648.0
-offset_bottom = 616.0
+offset_bottom = 600.0
 theme_override_fonts/font = SubResource("FontFile_yu4t5")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "
 
-Guide Lily to eat the
-      by placing 
-for her to cross the pond.
+Guide Lily to eat all the flies,
+by placing lilypads for her to move
+across the pond.
 
-You must eat them all,
-before the time runs out
-and Lily feels too hungry
-to have a good day."
+You must eat them all, before the time
+runs out, and Lily feels too hungry to
+have a good day.
+
+There are 10 rounds of increasing
+difficulty.
+Every 3 seconds, you gain one extra
+lilypad.
+If you complete a round with time
+to spare, you gain even more
+lilypads!"
 
 [node name="red" type="Label" parent="HowTo"]
 offset_left = 8.0
-offset_top = 16.0
 offset_right = 648.0
-offset_bottom = 616.0
+offset_bottom = 600.0
 theme_override_fonts/font = ExtResource("3_jkaqy")
-theme_override_font_sizes/font_size = 48
+theme_override_font_sizes/font_size = 32
 text = "
 
+                          flies
+           lilypads
 
-flies            lilypads
+
+                                  time
+runs out
 
 
+          10 rounds
 
-           time runs out"
+      3
+
+                             time
+to spare"
 
 [node name="Credits" type="Node2D" parent="."]
 unique_name_in_owner = true
