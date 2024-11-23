@@ -824,6 +824,14 @@ offset_top = 86.0
 offset_right = 658.0
 offset_bottom = 619.0
 mouse_filter = 2
+color = Color(0.113725, 0.14902, 0.235294, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="Panels/Game/CanvasLayer"]
+offset_left = 4.0
+offset_top = 86.0
+offset_right = 636.0
+offset_bottom = 596.0
+mouse_filter = 2
 color = Color(0.486275, 0.603922, 0.67451, 1)
 
 [node name="Frog" parent="Panels/Game" instance=ExtResource("1_vsc66")]
