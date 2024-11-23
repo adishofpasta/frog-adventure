@@ -774,7 +774,7 @@ texture = ExtResource("3_der17")
 
 [node name="NoClock" type="Node2D" parent="Panels/StatusBar"]
 unique_name_in_owner = true
-position = Vector2(48, 0)
+position = Vector2(56, 0)
 
 [node name="No2" parent="Panels/StatusBar/NoClock" instance=ExtResource("5_s8uky")]
 unique_name_in_owner = true
@@ -789,22 +789,26 @@ unique_name_in_owner = true
 position = Vector2(408, 48)
 
 [node name="Clock" type="Sprite2D" parent="Panels/StatusBar"]
-position = Vector2(348, 46)
+position = Vector2(356, 46)
 texture = ExtResource("6_ibvrs")
 
 [node name="Round" type="Label" parent="Panels/StatusBar"]
+unique_name_in_owner = true
 layout_mode = 0
-offset_left = 104.0
+offset_left = 84.0
 offset_top = 16.0
-offset_right = 264.0
+offset_right = 244.0
 offset_bottom = 80.0
 theme_override_fonts/font = SubResource("FontFile_yu4t5")
 theme_override_font_sizes/font_size = 64
 text = "Round"
 
 [node name="No5" parent="Panels/StatusBar/Round" instance=ExtResource("5_s8uky")]
-unique_name_in_owner = true
 position = Vector2(184, 32)
+
+[node name="No6" parent="Panels/StatusBar/Round" instance=ExtResource("5_s8uky")]
+visible = false
+position = Vector2(216, 32)
 
 [node name="Game" type="Control" parent="Panels"]
 unique_name_in_owner = true
@@ -825,7 +829,7 @@ color = Color(0.486275, 0.603922, 0.67451, 1)
 [node name="Frog" parent="Panels/Game" instance=ExtResource("1_vsc66")]
 unique_name_in_owner = true
 z_index = 5
-position = Vector2(288, 30)
+position = Vector2(288, 150)
 
 [node name="JumpTimer" type="Timer" parent="Panels/Game"]
 unique_name_in_owner = true
@@ -910,7 +914,7 @@ unique_name_in_owner = true
 
 [node name="MenuButton" parent="." instance=ExtResource("12_f3bnq")]
 unique_name_in_owner = true
-position = Vector2(54, 48)
+position = Vector2(46, 52)
 
 [node name="Area2D" type="Area2D" parent="MenuButton"]
 

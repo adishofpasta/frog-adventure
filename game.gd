@@ -43,14 +43,19 @@ var has_preview : bool = false
 # UI numbers
 var no_lily = []
 var no_clock = []
-var no_level
+var no_level = []
 # Current game level and fly goal
 var level = -1
 var flies = 0
+# Blocked indexes for fly placement - this avoids that a fly can start directly near the frog.
+var blocked_indexes = [23, 25, 14, 34]
+var fly_bounds = [1335, 1336, 436, 426, 527, 528, 618, 608, 708, 709]
 # Target, resource and time amount per stage
-const fly_count = [2, 3, 4, 5, 5, 6, 6, 7, 7, 8]
-const lily_count = [10, 5, 5, 5, 5, 6, 6, 6, 6, 7]
-const round_time = [30, 35, 40, 45, 50, 50, 55, 60, 65, 70]
+const fly_count = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+const lily_count = [4, 4, 4, 4, 4, 4, 4, 5, 5, 5]
+# If you clear a round with time to spare, you get extra lilies
+var lily_bonus = 0
+const round_time = [9, 12, 15, 15, 18, 18, 21, 21, 24, 30]
 # Game timer in seconds + 2 of wait time
 const game_delay : float = 2.0
 var stage_delay = game_delay
@@ -77,7 +82,7 @@ func _ready():
 	# Get references of UI numbers
 	no_lily.append_array(%NoLily.get_children())
 	no_clock.append_array(%NoClock.get_children())
-	no_level = %No5
+	no_level.append_array(%Round.get_children())
 	
 	# Start the round
 	start_round(false)
@@ -134,7 +139,8 @@ func start_round(restart : bool):
 	frog.reset()
 	frog.position = frog_position
 	var grid_index = (frog.position / cell).floor()
-	grid[grid_index.x + grid_index.y * cols] = 2
+	var frog_index = grid_index.x + grid_index.y * cols
+	grid[frog_index] = 2
 	# Place the frog on a lilypad, we ain't levitating
 	var first_lilypad = lilypad.instantiate()
 	first_lilypad.position = frog.position
@@ -143,7 +149,7 @@ func start_round(restart : bool):
 	
 	set_level(level + 1)
 	set_time(game_time)
-	set_lilypad_number(lily_count[level], false, restart)
+	set_lilypad_number(lily_count[level] + lily_bonus, false, restart)
 	place_flies(fly_count[level])
 	round_state = 0
 	round_starting = true
@@ -181,7 +187,7 @@ func on_tick():
 		game_time = 0
 		game_timer.stop()
 		clear_round(2)
-	elif game_time > 0 and game_time % 5 == 0:
+	elif game_time > 0 and game_time % 3 == 0:
 		set_lilypad_number(1, true, false)
 	set_time(game_time)
 	if game_time == 0:
@@ -192,9 +198,15 @@ func on_tick():
 func place_flies(amount):
 	flies = 0
 	var picked : int = 0
+	var bound_x0 = (fly_bounds[level] / 10) % 10
+	var bound_x1 = fly_bounds[level] % 10
+	var bound_y0 = fly_bounds[level] / 1000
+	var bound_y1 = (fly_bounds[level] / 100) % 10
 	while (picked < amount):
-		var rand_index = randi() % size
-		if grid[rand_index] == 0:
+		var rand_x = randi_range(bound_x0, bound_x1)
+		var rand_y = randi_range(bound_y0, bound_y1)
+		var rand_index = rand_y * 10 + rand_x
+		if grid[rand_index] == 0 && !blocked_indexes.has(rand_index):
 			grid[rand_index] = 3
 			var _fly = fly.instantiate()
 			var _row = rand_index / cols
@@ -326,7 +338,14 @@ func set_time(value):
 func set_level(num):
 	level = num
 	game_time = round_time[level]
-	no_level.set_number(num + 1)
+	var digit = num + 1
+	if digit < 10:
+		no_level[1].visible = false
+		no_level[0].set_number(digit)
+	else:
+		no_level[0].set_number(digit / 10)
+		no_level[1].set_number(digit % 10)
+		no_level[1].visible = true
 
 
 # Multi-purpose function to alter the display of UI numbers
@@ -338,8 +357,11 @@ func set_digits(blink : int, type : int, ani : String):
 		for digit in no_lily:
 			digit.set_state("run")
 			digit.visible = true
-		no_level.set_state("run")
-		no_level.visible = true
+		for digit in no_level:
+			digit.set_state("run")
+		no_level[0].visible = true
+		if level >= 9:
+			no_level[1].visible = true
 	else:
 		if blink == 1:
 			var has_ani : bool = ani != ""
@@ -354,9 +376,12 @@ func set_digits(blink : int, type : int, ani : String):
 					if has_ani:
 						digit.set_state(ani)
 			if (type & 4) != 0:
-				no_level.visible = !no_level.visible
-				if has_ani:
-					no_level.set_state(ani)
+				no_level[0].visible = !no_level[0].visible
+				if level >= 9:
+					no_level[1].visible = !no_level[1].visible
+				for digit in no_level:
+					if has_ani:
+						digit.set_state(ani)
 		else:
 			if (type & 1) != 0:
 				for digit in no_clock:
@@ -367,8 +392,11 @@ func set_digits(blink : int, type : int, ani : String):
 					digit.set_state(ani)
 					digit.visible = true
 			if (type & 4) != 0:
-				no_level.set_state(ani)
-				no_level.visible = true
+				for digit in no_level:
+					digit.set_state(ani)
+				no_level[0].visible = true
+				if level >= 9:
+					no_level[1].visible = true
 
 
 # Blink the "round clear" text
@@ -401,10 +429,18 @@ func clear_round(state : int):
 	game_timer.timeout.disconnect(on_tick)
 	lily_timer.stop()
 	set_digits(0, 7, "static")
-	if state == 2:
+	# Round won - check for bonus lilypads in the next round
+	if state == 1:
+		lily_bonus = ceili(((game_time - 1) / 3) * 1.5)
+		if lily_bonus < 0:
+			lily_bonus = 0
+		pass
+	# Round lost - print "Game over"
+	elif state == 2:
 		for msg in clear_msg.get_children():
 			msg.text = " Game Over!"
 		clear_msg.get_child(4).visible = true
+	# Game is won - print it
 	elif state == 3:
 		for msg in clear_msg.get_children():
 			msg.text = "  Game Won!"
