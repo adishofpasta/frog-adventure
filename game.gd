@@ -19,6 +19,7 @@ extends Node2D
 @onready var blink_timer_2 = $PreviewLilypad/blink_timer2
 @onready var sfx_jump = $SFX/SFXJump
 @onready var sfx_clear_stage = $SFX/SFXClearStage
+@onready var sfx_win_game = $SFX/SFXWinGame
 
 # Grid constants (width and height of cells)
 const w = 640
@@ -255,7 +256,7 @@ func on_jump(old_cell, new_cell, x, y):
 func on_frog_done_catching(caught):
 	flies -= caught
 	if flies == 0:
-		clear_round(1)
+		clear_round(1 if level < 9 else 3)
 	else:
 		jump_timer.start()
 
@@ -378,7 +379,7 @@ func blink_message():
 	else:
 		clear_msg.visible = true
 		if clear_delay <= -2.0:
-			if round_state == 2:
+			if round_state > 1:
 				get_tree().change_scene_to_file("res://main_menu.tscn")
 			else:
 				clear_msg.visible = false
@@ -402,8 +403,11 @@ func clear_round(state : int):
 	set_digits(0, 7, "static")
 	if state == 2:
 		for msg in clear_msg.get_children():
-			msg.text = "Game Over!"
+			msg.text = " Game Over!"
 		clear_msg.get_child(4).visible = true
+	elif state == 3:
+		for msg in clear_msg.get_children():
+			msg.text = "  Game Won!"
 	clear_delay = 0.5
 	round_timer.wait_time = 0.25
 	round_timer.start()
@@ -419,7 +423,10 @@ func round_timer_tick():
 		round_timer.timeout.disconnect(round_timer_tick)
 		round_timer.timeout.connect(blink_message)
 		round_timer.start()
-		sfx_clear_stage.play()
+		if round_state < 3:
+			sfx_clear_stage.play()
+		else:
+			sfx_win_game.play()
 
 
 
