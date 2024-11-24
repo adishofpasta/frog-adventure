@@ -9,8 +9,9 @@ var has_title = false
 
 func set_type(val : int):
 	ani.visible = false
-	ani = type.get_children()[val]
-	ani.visible = true
+	if val >= 0:
+		ani = type.get_children()[val]
+		ani.visible = true
 
 func set_title(text : String):
 	has_title = text != ""

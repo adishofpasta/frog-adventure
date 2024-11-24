@@ -470,7 +470,10 @@ func on_menu_button_clicked(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
-				button_restart.visible = (round_state == 0) && !round_starting
+				var can_restart = (round_state == 0) && !round_starting
+				$PauseMenu/ButtonRestart/Area2D.visible = can_restart
+				button_restart.set_type(3 if can_restart else -1)
+				menu_button.set_type(-1)
 				game_paused = true
 				pause_game(true)
 				for lily_no in no_lily:
@@ -489,6 +492,7 @@ func pause_game(paused : bool):
 func on_play_button_clicked(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index and event.pressed:
+			menu_button.set_type(1)
 			game_paused = false
 			get_tree().paused = false
 			pause_game(false)
@@ -503,6 +507,7 @@ func on_restart_button_clicked(_viewport, event, _shape_idx):
 				_timer.stop()
 			game_timer.timeout.disconnect(on_tick)
 			level -= 1
+			menu_button.set_type(1)
 			game_paused = false
 			get_tree().paused = false
 			pause_game(false)
