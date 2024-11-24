@@ -19,7 +19,8 @@ script = ExtResource("1_h5ny0")
 
 [node name="SFXCatch" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_vcbpq")
-volume_db = -9.369
+volume_db = -16.0
+bus = &"SFX"
 
 [node name="FrogSprite" parent="." instance=ExtResource("2_duqlj")]
 unique_name_in_owner = true

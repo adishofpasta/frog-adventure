@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://dbdrnrjvii2it"]
+[gd_scene load_steps=28 format=4 uid="uid://dbdrnrjvii2it"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hsu82"]
 [ext_resource type="PackedScene" uid="uid://bb3c305h4bq15" path="res://frog.tscn" id="1_vsc66"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://crk3hgm5dda0x" path="res://sfx/Ambiance_Meadow_Birds_Flies_Calm_Loop_Stereo.wav" id="3_v3fab"]
 [ext_resource type="AudioStream" uid="uid://coi2mrxkqo1ho" path="res://sfx/gamewin.wav" id="4_c2ukq"]
 [ext_resource type="Texture2D" uid="uid://dws7vtbrc5ns2" path="res://canvas/lilypad_pre.png" id="4_rh5tw"]
-[ext_resource type="FontFile" uid="uid://il545vcsxw34" path="res://canvas/font/small_font_cyan.png" id="5_hufyv"]
 [ext_resource type="PackedScene" uid="uid://bbjx5dv6uj6t1" path="res://number.tscn" id="5_s8uky"]
 [ext_resource type="Texture2D" uid="uid://dddohyegfgwxq" path="res://canvas/clock.png" id="6_ibvrs"]
 [ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://cursor.tscn" id="7_tkwux"]
@@ -704,7 +703,16 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uvava"]
-radius = 29.0
+radius = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0gde"]
+radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pido4"]
+radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mhlav"]
+radius = 32.1403
 
 [node name="FrogGame" type="Node2D"]
 script = ExtResource("1_hsu82")
@@ -718,25 +726,30 @@ tile_set = SubResource("TileSet_ryvvy")
 
 [node name="SFXJump" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("2_lyuhc")
-volume_db = -13.0
+volume_db = -16.0
+bus = &"SFX"
 
 [node name="SFXClearStage" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("3_066hb")
 volume_db = -4.0
+bus = &"SFX"
 
 [node name="SFXWinGame" type="AudioStreamPlayer" parent="SFX"]
 stream = ExtResource("4_c2ukq")
 volume_db = -4.0
+bus = &"SFX"
 
 [node name="MainLoopTheme" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 stream = ExtResource("2_jdfpy")
 autoplay = true
+bus = &"Music"
 
 [node name="RainForestTheme" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_v3fab")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"
 
 [node name="Panels" type="VBoxContainer" parent="."]
 offset_right = 640.0
@@ -958,38 +971,8 @@ theme_override_fonts/font = ExtResource("9_pjlc2")
 theme_override_font_sizes/font_size = 48
 text = "Paused"
 
-[node name="PauseLabel2" type="Label" parent="PauseMenu"]
-offset_left = 168.0
-offset_top = 228.0
-offset_right = 456.0
-offset_bottom = 260.0
-theme_override_fonts/font = ExtResource("5_hufyv")
-theme_override_font_sizes/font_size = 32
-text = "Continue    Restart"
-
-[node name="ToMainMenu" type="Label" parent="PauseMenu"]
-offset_left = 184.0
-offset_top = 374.0
-offset_right = 456.0
-offset_bottom = 422.0
-theme_override_fonts/font = ExtResource("5_hufyv")
-theme_override_font_sizes/font_size = 32
-text = "Back to main menu"
-
-[node name="ToMainMenu_Gold" type="Label" parent="PauseMenu"]
-offset_left = 184.0
-offset_top = 374.0
-offset_right = 456.0
-offset_bottom = 422.0
-mouse_filter = 0
-theme_override_fonts/font = ExtResource("9_pjlc2")
-theme_override_font_sizes/font_size = 32
-text = "Back to main menu"
-visible_characters = 0
-visible_ratio = 0.0
-
 [node name="ButtonPlay" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
-position = Vector2(234, 304)
+position = Vector2(234, 280)
 
 [node name="Area2D" type="Area2D" parent="PauseMenu/ButtonPlay"]
 
@@ -998,13 +981,40 @@ position = Vector2(-2, -2)
 shape = SubResource("CircleShape2D_uvava")
 
 [node name="ButtonRestart" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
-position = Vector2(410, 304)
+position = Vector2(410, 280)
 
 [node name="Area2D" type="Area2D" parent="PauseMenu/ButtonRestart"]
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="PauseMenu/ButtonRestart/Area2D"]
 position = Vector2(-2, -2)
 shape = SubResource("CircleShape2D_uvava")
+
+[node name="ButtonMusic" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(194, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonMusic"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonMusic/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_y0gde")
+
+[node name="ButtonSFX" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(274, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonSFX"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonSFX/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_pido4")
+
+[node name="ButtonQuit" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(410, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonQuit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonQuit/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_mhlav")
 
 [node name="StatusBarBorder" type="Node2D" parent="."]
 
@@ -1054,8 +1064,8 @@ position = Vector2(-75, 92)
 [connection signal="timeout" from="EndRoundTimer" to="." method="round_timer_tick"]
 [connection signal="input_event" from="MenuButton/Area2D" to="." method="on_menu_button_clicked"]
 [connection signal="timeout" from="PauseMenu/Timer" to="PauseMenu" method="on_timer_tick"]
-[connection signal="gui_input" from="PauseMenu/ToMainMenu_Gold" to="PauseMenu" method="main_menu_onclick"]
-[connection signal="mouse_entered" from="PauseMenu/ToMainMenu_Gold" to="PauseMenu" method="main_menu_entered"]
-[connection signal="mouse_exited" from="PauseMenu/ToMainMenu_Gold" to="PauseMenu" method="main_menu_exited"]
 [connection signal="input_event" from="PauseMenu/ButtonPlay/Area2D" to="." method="on_play_button_clicked"]
 [connection signal="input_event" from="PauseMenu/ButtonRestart/Area2D" to="." method="on_restart_button_clicked"]
+[connection signal="input_event" from="PauseMenu/ButtonMusic/Area2D" to="PauseMenu" method="on_toggle_music"]
+[connection signal="input_event" from="PauseMenu/ButtonSFX/Area2D" to="PauseMenu" method="on_toggle_sfx"]
+[connection signal="input_event" from="PauseMenu/ButtonQuit/Area2D" to="PauseMenu" method="main_menu_onclick"]

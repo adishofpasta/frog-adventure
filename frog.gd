@@ -69,8 +69,10 @@ func try_catch_fly():
 		elif target_fly.position.y > position.y:
 			dir = 3 # fly below
 		frog.on_catching(dir)
-		sfx_catch.pitch_scale = randf_range(0.5, 1.5)
+		# Note: as of Godot 4.3, AudioStreamPlayer.play() resets pitch_scale to 1.
+		# Must set the pitch scale AFTER play.
 		sfx_catch.play()
+		sfx_catch.pitch_scale = randf_range(0.5, 1.5)
 		caught_flies += 1
 	else:
 		frog.on_idle()

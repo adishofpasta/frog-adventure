@@ -2,18 +2,28 @@ extends Node2D
 
 @onready var base = %Base
 @onready var type = $Type
+@onready var title = %Title
 @onready var ani : AnimatedSprite2D = type.get_children()[0]
 
+var has_title = false
+
 func set_type(val : int):
+	ani.visible = false
 	ani = type.get_children()[val]
 	ani.visible = true
 
+func set_title(text : String):
+	has_title = text != ""
+	title.text = text
+
 func on_focus():
 	ani.frame = 1
+	title.visible = has_title
 	
 func on_lose_focus():
 	ani.frame = 0
 	base.frame = 0
+	title.visible = false
 
 func pressed():
 	base.frame = 1

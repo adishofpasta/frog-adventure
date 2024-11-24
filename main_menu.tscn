@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://csbuv8akutpwo"]
+[gd_scene load_steps=18 format=4 uid="uid://csbuv8akutpwo"]
 
 [ext_resource type="FontFile" uid="uid://bssko0pmlj5h8" path="res://canvas/font/small_font_gold.png" id="1_64f08"]
 [ext_resource type="Script" path="res://main_menu.gd" id="1_u4wnp"]
@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://hhjmfenb43xr" path="res://canvas/frogsheet.png" id="3_k5uux"]
 [ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://button.tscn" id="5_ev87v"]
 [ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://cursor.tscn" id="7_2ajbx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sftx4"]
+radius = 32.0156
 
 [sub_resource type="Image" id="Image_oksja"]
 data = {
@@ -674,8 +677,8 @@ cache/0/16/0/glyphs/127/size = Vector2(8, 16)
 cache/0/16/0/glyphs/127/uv_rect = Rect2(120, 112, 8, 16)
 cache/0/16/0/glyphs/127/texture_idx = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0reyo"]
-size = Vector2(56, 52)
+[sub_resource type="CircleShape2D" id="CircleShape2D_vdm1o"]
+radius = 32.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g2dex"]
 atlas = ExtResource("3_k5uux")
@@ -726,6 +729,7 @@ unique_name_in_owner = true
 stream = ExtResource("2_bfv4j")
 volume_db = -5.0
 autoplay = true
+bus = &"Music"
 
 [node name="MusicTimer" type="Timer" parent="Music"]
 wait_time = 3.0
@@ -742,6 +746,26 @@ color = Color(0.113725, 0.14902, 0.235294, 1)
 
 [node name="Title" type="Node2D" parent="."]
 unique_name_in_owner = true
+
+[node name="ButtonMusic" parent="Title" instance=ExtResource("5_ev87v")]
+unique_name_in_owner = true
+position = Vector2(52, 548)
+
+[node name="Area2D" type="Area2D" parent="Title/ButtonMusic"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Title/ButtonMusic/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_sftx4")
+
+[node name="ButtonSFX" parent="Title" instance=ExtResource("5_ev87v")]
+unique_name_in_owner = true
+position = Vector2(140, 548)
+
+[node name="Area2D" type="Area2D" parent="Title/ButtonSFX"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Title/ButtonSFX/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_sftx4")
 
 [node name="gold" type="Label" parent="Title"]
 offset_left = 124.0
@@ -985,8 +1009,8 @@ position = Vector2(588, 548)
 [node name="Area2D2" type="Area2D" parent="ButtonBack"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonBack/Area2D2"]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_0reyo")
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_vdm1o")
 
 [node name="FrogSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
@@ -1001,6 +1025,8 @@ position = Vector2(-53, 13)
 
 [connection signal="finished" from="Music" to="." method="on_music_finished"]
 [connection signal="timeout" from="Music/MusicTimer" to="." method="can_restart_music"]
+[connection signal="input_event" from="Title/ButtonMusic/Area2D" to="." method="on_toggle_music"]
+[connection signal="input_event" from="Title/ButtonSFX/Area2D" to="." method="on_toggle_sfx"]
 [connection signal="gui_input" from="Title/menu_gold_start" to="." method="start_onclick"]
 [connection signal="mouse_entered" from="Title/menu_gold_start" to="." method="_on_menu_gold_start_mouse_entered"]
 [connection signal="mouse_exited" from="Title/menu_gold_start" to="." method="_on_menu_gold_start_mouse_exited"]

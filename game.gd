@@ -260,8 +260,8 @@ func on_jump(old_cell, new_cell, x, y):
 	var lilypads_under = frog.get_overlapping_bodies()
 	if lilypads_under.size() > 0:
 		lilypads_under[0].queue_free()
-	sfx_jump.pitch_scale = randf_range(0.7, 1.5)
 	sfx_jump.play()
+	sfx_jump.pitch_scale = randf_range(0.7, 1.5)
 
 
 # Reset the jump timer after catching a fly
