@@ -740,7 +740,7 @@ z_index = -1
 offset_left = -11.0
 offset_top = -12.0
 offset_right = 649.0
-offset_bottom = 612.0
+offset_bottom = 649.0
 mouse_filter = 2
 color = Color(0.113725, 0.14902, 0.235294, 1)
 
@@ -749,7 +749,7 @@ unique_name_in_owner = true
 
 [node name="ButtonMusic" parent="Title" instance=ExtResource("5_ev87v")]
 unique_name_in_owner = true
-position = Vector2(52, 548)
+position = Vector2(52, 588)
 
 [node name="Area2D" type="Area2D" parent="Title/ButtonMusic"]
 
@@ -759,7 +759,7 @@ shape = SubResource("CircleShape2D_sftx4")
 
 [node name="ButtonSFX" parent="Title" instance=ExtResource("5_ev87v")]
 unique_name_in_owner = true
-position = Vector2(140, 548)
+position = Vector2(140, 588)
 
 [node name="Area2D" type="Area2D" parent="Title/ButtonSFX"]
 

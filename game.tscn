@@ -835,7 +835,7 @@ layer = -2
 offset_left = -16.0
 offset_top = 86.0
 offset_right = 658.0
-offset_bottom = 619.0
+offset_bottom = 651.0
 mouse_filter = 2
 color = Color(0.113725, 0.14902, 0.235294, 1)
 
