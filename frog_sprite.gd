@@ -22,10 +22,10 @@ func on_catching(dir : int):
 		scale.x = 1
 	elif dir == 2:
 		tongue.rotation_degrees = 270.0
-		tongue.position = Vector2(12, -40)
+		tongue.position = Vector2(3, -10)
 	elif dir == 3:
 		tongue.rotation_degrees = 90.0
-		tongue.position = Vector2(4, 40)
+		tongue.position = Vector2(1, 10)
 	frog_animation.frame = dir
 	tongue.play("extend")
 
@@ -33,6 +33,6 @@ func on_caught():
 	if tongue.animation == "extend":
 		tongue.frame = 0
 		tongue.rotation_degrees = 0.0
-		tongue.position = Vector2(40, 0)
+		tongue.position = Vector2(10, 0)
 		frog_animation.play("idle")
 		fly_caught.emit()

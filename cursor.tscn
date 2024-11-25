@@ -1,24 +1,24 @@
 [gd_scene load_steps=6 format=3 uid="uid://dt4gpkl0131ce"]
 
 [ext_resource type="Script" path="res://cursor.gd" id="1_4ur1p"]
-[ext_resource type="Texture2D" uid="uid://sboga7f42nmd" path="res://canvas/cursor-sheet.png" id="1_7gmsi"]
+[ext_resource type="Texture2D" uid="uid://dkptvngyafef7" path="res://canvas/ui_sheet.png" id="2_sw138"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4ucw3"]
-atlas = ExtResource("1_7gmsi")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_v31ox"]
+atlas = ExtResource("2_sw138")
+region = Rect2(64, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pxeni"]
-atlas = ExtResource("1_7gmsi")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fp5yf"]
+atlas = ExtResource("2_sw138")
+region = Rect2(64, 16, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gfapy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4ucw3")
+"texture": SubResource("AtlasTexture_v31ox")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pxeni")
+"texture": SubResource("AtlasTexture_fp5yf")
 }],
 "loop": false,
 "name": &"default",
@@ -32,4 +32,5 @@ script = ExtResource("1_4ur1p")
 [node name="Icon" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(12, 20)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_gfapy")

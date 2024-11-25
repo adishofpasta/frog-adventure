@@ -1,6 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cq4ekdhcvlajo"]
+[gd_scene load_steps=4 format=3 uid="uid://cq4ekdhcvlajo"]
 
-[ext_resource type="Texture2D" uid="uid://bgb3aus5oxfir" path="res://canvas/lilypad.png" id="1_yu4vf"]
+[ext_resource type="Texture2D" uid="uid://dkptvngyafef7" path="res://canvas/ui_sheet.png" id="1_kuwoc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2skoh"]
+atlas = ExtResource("1_kuwoc")
+region = Rect2(64, 64, 16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bgf8u"]
 radius = 29.0172
@@ -8,7 +12,8 @@ radius = 29.0172
 [node name="Lilypad" type="CharacterBody2D"]
 
 [node name="Lilypad" type="Sprite2D" parent="."]
-texture = ExtResource("1_yu4vf")
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_2skoh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)

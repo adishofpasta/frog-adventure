@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2wnc1bt8ljh3"
-path="res://.godot/imported/frogcatchsheet.png-44dfa02570023943e0823d8a72452888.ctex"
+uid="uid://cwnn520177idq"
+path="res://.godot/imported/frog_sheet.png-98ab71441d2d8fe68160cf2d998796aa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://canvas/frogcatchsheet.png"
-dest_files=["res://.godot/imported/frogcatchsheet.png-44dfa02570023943e0823d8a72452888.ctex"]
+source_file="res://canvas/frog_sheet.png"
+dest_files=["res://.godot/imported/frog_sheet.png-98ab71441d2d8fe68160cf2d998796aa.ctex"]
 
 [params]
 

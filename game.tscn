@@ -1,27 +1,33 @@
-[gd_scene load_steps=28 format=4 uid="uid://dbdrnrjvii2it"]
+[gd_scene load_steps=30 format=4 uid="uid://dbdrnrjvii2it"]
 
 [ext_resource type="Script" path="res://game.gd" id="1_hsu82"]
 [ext_resource type="PackedScene" uid="uid://bb3c305h4bq15" path="res://frog.tscn" id="1_vsc66"]
 [ext_resource type="AudioStream" uid="uid://t01hrwfrfeih" path="res://sfx/main_loop.wav" id="2_jdfpy"]
 [ext_resource type="AudioStream" uid="uid://bo3u6j2vcrmh3" path="res://sfx/Retro_Jump_Short_03.wav" id="2_lyuhc"]
 [ext_resource type="AudioStream" uid="uid://dj7x85wb0yfk1" path="res://sfx/clearscene.wav" id="3_066hb"]
-[ext_resource type="Texture2D" uid="uid://dwa4ywpb3804g" path="res://canvas/lilypad_ico.png" id="3_der17"]
-[ext_resource type="Texture2D" uid="uid://b5bofi2tiuw4o" path="res://canvas/lilypad_pre2.png" id="3_m5857"]
 [ext_resource type="AudioStream" uid="uid://crk3hgm5dda0x" path="res://sfx/Ambiance_Meadow_Birds_Flies_Calm_Loop_Stereo.wav" id="3_v3fab"]
 [ext_resource type="AudioStream" uid="uid://coi2mrxkqo1ho" path="res://sfx/gamewin.wav" id="4_c2ukq"]
-[ext_resource type="Texture2D" uid="uid://dws7vtbrc5ns2" path="res://canvas/lilypad_pre.png" id="4_rh5tw"]
 [ext_resource type="PackedScene" uid="uid://bbjx5dv6uj6t1" path="res://number.tscn" id="5_s8uky"]
-[ext_resource type="Texture2D" uid="uid://dddohyegfgwxq" path="res://canvas/clock.png" id="6_ibvrs"]
 [ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://cursor.tscn" id="7_tkwux"]
+[ext_resource type="Texture2D" uid="uid://dkptvngyafef7" path="res://canvas/ui_sheet.png" id="8_a2wvr"]
 [ext_resource type="FontFile" uid="uid://brb8m2hmwk6ma" path="res://canvas/font/small_font_blue.png" id="9_hme2c"]
 [ext_resource type="FontFile" uid="uid://0q4v8qhes6n1" path="res://canvas/font/outline_font_cyan.png" id="9_kh4dt"]
 [ext_resource type="FontFile" uid="uid://bssko0pmlj5h8" path="res://canvas/font/small_font_gold.png" id="9_pjlc2"]
+[ext_resource type="Texture2D" uid="uid://cwnn520177idq" path="res://canvas/frog_sheet.png" id="10_ii74e"]
 [ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://button.tscn" id="12_f3bnq"]
 [ext_resource type="FontFile" uid="uid://bmbged4cjmm1u" path="res://canvas/font/small_font_red.png" id="15_7lq38"]
 [ext_resource type="Script" path="res://pause_menu.gd" id="16_rakxa"]
 
 [sub_resource type="TileSet" id="TileSet_ryvvy"]
 tile_size = Vector2i(64, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an3nc"]
+atlas = ExtResource("8_a2wvr")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slq3t"]
+atlas = ExtResource("8_a2wvr")
+region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="Image" id="Image_oksja"]
 data = {
@@ -688,14 +694,22 @@ cache/0/16/0/glyphs/127/size = Vector2(8, 16)
 cache/0/16/0/glyphs/127/uv_rect = Rect2(120, 112, 8, 16)
 cache/0/16/0/glyphs/127/texture_idx = 0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5br3j"]
+atlas = ExtResource("10_ii74e")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vpaj"]
+atlas = ExtResource("10_ii74e")
+region = Rect2(48, 48, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_8juv8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_rh5tw")
+"texture": SubResource("AtlasTexture_5br3j")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_m5857")
+"texture": SubResource("AtlasTexture_3vpaj")
 }],
 "loop": true,
 "name": &"default",
@@ -783,7 +797,8 @@ position = Vector2(608, 48)
 
 [node name="LilypadIcon" type="Sprite2D" parent="Panels/StatusBar"]
 position = Vector2(520, 44)
-texture = ExtResource("3_der17")
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_an3nc")
 
 [node name="NoClock" type="Node2D" parent="Panels/StatusBar"]
 unique_name_in_owner = true
@@ -803,7 +818,8 @@ position = Vector2(408, 48)
 
 [node name="Clock" type="Sprite2D" parent="Panels/StatusBar"]
 position = Vector2(356, 46)
-texture = ExtResource("6_ibvrs")
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_slq3t")
 
 [node name="Round" type="Label" parent="Panels/StatusBar"]
 unique_name_in_owner = true
@@ -864,6 +880,7 @@ one_shot = true
 [node name="PreviewLilypad" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-67, 41)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_8juv8")
 
 [node name="blink_timer" type="Timer" parent="PreviewLilypad"]

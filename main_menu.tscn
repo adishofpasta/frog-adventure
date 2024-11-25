@@ -5,9 +5,9 @@
 [ext_resource type="AudioStream" uid="uid://beds2cn3jd0oe" path="res://sfx/frog_menu.wav" id="2_bfv4j"]
 [ext_resource type="FontFile" uid="uid://il545vcsxw34" path="res://canvas/font/small_font_cyan.png" id="2_psoy3"]
 [ext_resource type="FontFile" uid="uid://bmbged4cjmm1u" path="res://canvas/font/small_font_red.png" id="3_jkaqy"]
-[ext_resource type="Texture2D" uid="uid://hhjmfenb43xr" path="res://canvas/frogsheet.png" id="3_k5uux"]
 [ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://button.tscn" id="5_ev87v"]
 [ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://cursor.tscn" id="7_2ajbx"]
+[ext_resource type="Texture2D" uid="uid://cwnn520177idq" path="res://canvas/frog_sheet.png" id="7_ju6wd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sftx4"]
 radius = 32.0156
@@ -680,30 +680,30 @@ cache/0/16/0/glyphs/127/texture_idx = 0
 [sub_resource type="CircleShape2D" id="CircleShape2D_vdm1o"]
 radius = 32.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_g2dex"]
-atlas = ExtResource("3_k5uux")
-region = Rect2(0, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6iwe1"]
+atlas = ExtResource("7_ju6wd")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5avvo"]
-atlas = ExtResource("3_k5uux")
-region = Rect2(64, 0, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_srqjg"]
+atlas = ExtResource("7_ju6wd")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fvvhh"]
-atlas = ExtResource("3_k5uux")
-region = Rect2(0, 64, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_lyar0"]
+atlas = ExtResource("7_ju6wd")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6somi"]
-atlas = ExtResource("3_k5uux")
-region = Rect2(64, 64, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgqdu"]
+atlas = ExtResource("7_ju6wd")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_38vhx"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_g2dex")
+"texture": SubResource("AtlasTexture_6iwe1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_5avvo")
+"texture": SubResource("AtlasTexture_srqjg")
 }],
 "loop": true,
 "name": &"default",
@@ -711,10 +711,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fvvhh")
+"texture": SubResource("AtlasTexture_lyar0")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6somi")
+"texture": SubResource("AtlasTexture_wgqdu")
 }],
 "loop": false,
 "name": &"lucky",
@@ -1015,9 +1015,10 @@ shape = SubResource("CircleShape2D_vdm1o")
 [node name="FrogSprite" type="AnimatedSprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(584, 48)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_38vhx")
+animation = &"lucky"
 autoplay = "default"
-frame_progress = 0.384679
 
 [node name="Cursor" parent="." instance=ExtResource("7_2ajbx")]
 unique_name_in_owner = true
