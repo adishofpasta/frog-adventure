@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcxjroqwylxcq"
-path="res://.godot/imported/flysheet.png-afd51a0e23a1b50b490329558cd02352.ctex"
+uid="uid://t52vaxii63ph"
+path="res://.godot/imported/entity_sheet.png-09ec9fa43b6ee2a54c6812ac4adb5830.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://canvas/flysheet.png"
-dest_files=["res://.godot/imported/flysheet.png-afd51a0e23a1b50b490329558cd02352.ctex"]
+source_file="res://canvas/entity_sheet.png"
+dest_files=["res://.godot/imported/entity_sheet.png-09ec9fa43b6ee2a54c6812ac4adb5830.ctex"]
 
 [params]
 
