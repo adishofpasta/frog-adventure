@@ -769,8 +769,8 @@ shape = SubResource("CircleShape2D_sftx4")
 
 [node name="gold" type="Label" parent="Title"]
 offset_left = 124.0
-offset_right = 764.0
-offset_bottom = 600.0
+offset_right = 508.0
+offset_bottom = 195.0
 theme_override_fonts/font = ExtResource("1_64f08")
 theme_override_font_sizes/font_size = 96
 text = "  Lily
@@ -778,15 +778,12 @@ the Frog"
 
 [node name="menu_cyan" type="Label" parent="Title"]
 offset_left = 132.0
-offset_right = 772.0
-offset_bottom = 600.0
+offset_top = 268.0
+offset_right = 484.0
+offset_bottom = 466.0
 theme_override_fonts/font = SubResource("FontFile_yu4t5")
 theme_override_font_sizes/font_size = 64
-text = "
-
-
-
-   Start!
+text = "   Start!
 How to play
   Credits"
 
@@ -831,52 +828,22 @@ visible_characters = 0
 visible_ratio = 0.0
 
 [node name="made_by" type="Label" parent="Title"]
-offset_left = 132.0
-offset_right = 772.0
-offset_bottom = 600.0
+offset_left = 228.0
+offset_top = 560.0
+offset_right = 628.0
+offset_bottom = 592.0
 theme_override_fonts/font = SubResource("FontFile_yu4t5")
 theme_override_font_sizes/font_size = 32
-text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      A game by a dish of pasta"
+text = "A game by a dish of pasta"
 
 [node name="made_by2" type="Label" parent="Title"]
-offset_left = 132.0
-offset_right = 772.0
-offset_bottom = 600.0
+offset_left = 388.0
+offset_top = 560.0
+offset_right = 628.0
+offset_bottom = 592.0
 theme_override_fonts/font = ExtResource("3_jkaqy")
 theme_override_font_sizes/font_size = 32
-text = "
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                a dish of pasta"
+text = "a dish of pasta"
 
 [node name="Timer" type="Timer" parent="Title"]
 wait_time = 4.0
@@ -888,8 +855,8 @@ visible = false
 
 [node name="gold" type="Label" parent="HowTo"]
 offset_left = 136.0
-offset_right = 776.0
-offset_bottom = 600.0
+offset_right = 488.0
+offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("1_64f08")
 theme_override_font_sizes/font_size = 64
 text = "How to play"
@@ -947,8 +914,8 @@ visible = false
 
 [node name="gold" type="Label" parent="Credits"]
 offset_left = 200.0
-offset_right = 840.0
-offset_bottom = 600.0
+offset_right = 424.0
+offset_bottom = 64.0
 theme_override_fonts/font = ExtResource("1_64f08")
 theme_override_font_sizes/font_size = 64
 text = "Credits"

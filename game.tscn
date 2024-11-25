@@ -947,9 +947,6 @@ theme_override_fonts/font = ExtResource("15_7lq38")
 theme_override_font_sizes/font_size = 64
 text = "Round Clear!"
 
-[node name="GameMenu" type="Node2D" parent="."]
-unique_name_in_owner = true
-
 [node name="MenuButton" parent="." instance=ExtResource("12_f3bnq")]
 unique_name_in_owner = true
 position = Vector2(46, 52)

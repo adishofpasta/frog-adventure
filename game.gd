@@ -5,7 +5,6 @@ extends Node2D
 @onready var frog_position = frog.position
 @onready var game = %Game
 @onready var cursor = %Cursor
-@onready var game_menu = %GameMenu
 @onready var pause_menu = %PauseMenu
 @onready var clear_msg = %RoundClear
 @onready var menu_button = %MenuButton
