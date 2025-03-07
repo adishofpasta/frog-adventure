@@ -1,16 +1,33 @@
-[gd_scene load_steps=18 format=4 uid="uid://csbuv8akutpwo"]
+[gd_scene load_steps=30 format=4 uid="uid://dbdrnrjvii2it"]
 
-[ext_resource type="FontFile" uid="uid://bssko0pmlj5h8" path="res://canvas/font/small_font_gold.png" id="1_64f08"]
-[ext_resource type="Script" path="res://main_menu.gd" id="1_u4wnp"]
-[ext_resource type="AudioStream" uid="uid://beds2cn3jd0oe" path="res://sfx/frog_menu.wav" id="2_bfv4j"]
-[ext_resource type="FontFile" uid="uid://il545vcsxw34" path="res://canvas/font/small_font_cyan.png" id="2_psoy3"]
-[ext_resource type="FontFile" uid="uid://bmbged4cjmm1u" path="res://canvas/font/small_font_red.png" id="3_jkaqy"]
-[ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://button.tscn" id="5_ev87v"]
-[ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://cursor.tscn" id="7_2ajbx"]
-[ext_resource type="Texture2D" uid="uid://cwnn520177idq" path="res://canvas/frog_sheet.png" id="7_ju6wd"]
+[ext_resource type="Script" uid="uid://di6mdp526hb52" path="res://scripts/game.gd" id="1_hsu82"]
+[ext_resource type="PackedScene" uid="uid://bb3c305h4bq15" path="res://scenes/frog.tscn" id="1_vsc66"]
+[ext_resource type="AudioStream" uid="uid://t01hrwfrfeih" path="res://sfx/main_loop.wav" id="2_jdfpy"]
+[ext_resource type="AudioStream" uid="uid://bo3u6j2vcrmh3" path="res://sfx/Retro_Jump_Short_03.wav" id="2_lyuhc"]
+[ext_resource type="AudioStream" uid="uid://dj7x85wb0yfk1" path="res://sfx/clearscene.wav" id="3_066hb"]
+[ext_resource type="AudioStream" uid="uid://crk3hgm5dda0x" path="res://sfx/Ambiance_Meadow_Birds_Flies_Calm_Loop_Stereo.wav" id="3_v3fab"]
+[ext_resource type="AudioStream" uid="uid://coi2mrxkqo1ho" path="res://sfx/gamewin.wav" id="4_c2ukq"]
+[ext_resource type="PackedScene" uid="uid://bbjx5dv6uj6t1" path="res://scenes/number.tscn" id="5_s8uky"]
+[ext_resource type="PackedScene" uid="uid://dt4gpkl0131ce" path="res://scenes/cursor.tscn" id="7_tkwux"]
+[ext_resource type="Texture2D" uid="uid://dkptvngyafef7" path="res://canvas/ui_sheet.png" id="8_a2wvr"]
+[ext_resource type="FontFile" uid="uid://brb8m2hmwk6ma" path="res://canvas/font/small_font_blue.png" id="9_hme2c"]
+[ext_resource type="FontFile" uid="uid://0q4v8qhes6n1" path="res://canvas/font/outline_font_cyan.png" id="9_kh4dt"]
+[ext_resource type="FontFile" uid="uid://bssko0pmlj5h8" path="res://canvas/font/small_font_gold.png" id="9_pjlc2"]
+[ext_resource type="Texture2D" uid="uid://cwnn520177idq" path="res://canvas/frog_sheet.png" id="10_ii74e"]
+[ext_resource type="PackedScene" uid="uid://7wvvqfe5r5e8" path="res://scenes/button.tscn" id="12_f3bnq"]
+[ext_resource type="FontFile" uid="uid://bmbged4cjmm1u" path="res://canvas/font/small_font_red.png" id="15_7lq38"]
+[ext_resource type="Script" uid="uid://dvo8271el3tjx" path="res://scripts/pause_menu.gd" id="16_rakxa"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_sftx4"]
-radius = 32.0156
+[sub_resource type="TileSet" id="TileSet_ryvvy"]
+tile_size = Vector2i(64, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_an3nc"]
+atlas = ExtResource("8_a2wvr")
+region = Rect2(64, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slq3t"]
+atlas = ExtResource("8_a2wvr")
+region = Rect2(64, 48, 16, 16)
 
 [sub_resource type="Image" id="Image_oksja"]
 data = {
@@ -677,333 +694,392 @@ cache/0/16/0/glyphs/127/size = Vector2(8, 16)
 cache/0/16/0/glyphs/127/uv_rect = Rect2(120, 112, 8, 16)
 cache/0/16/0/glyphs/127/texture_idx = 0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_vdm1o"]
-radius = 32.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_5br3j"]
+atlas = ExtResource("10_ii74e")
+region = Rect2(32, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_6iwe1"]
-atlas = ExtResource("7_ju6wd")
-region = Rect2(0, 0, 16, 16)
+[sub_resource type="AtlasTexture" id="AtlasTexture_3vpaj"]
+atlas = ExtResource("10_ii74e")
+region = Rect2(48, 48, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_srqjg"]
-atlas = ExtResource("7_ju6wd")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lyar0"]
-atlas = ExtResource("7_ju6wd")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wgqdu"]
-atlas = ExtResource("7_ju6wd")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_38vhx"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8juv8"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_6iwe1")
+"texture": SubResource("AtlasTexture_5br3j")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_srqjg")
+"texture": SubResource("AtlasTexture_3vpaj")
 }],
 "loop": true,
 "name": &"default",
-"speed": 2.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lyar0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wgqdu")
-}],
-"loop": false,
-"name": &"lucky",
-"speed": 2.0
+"speed": 5.0
 }]
 
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_u4wnp")
+[sub_resource type="CircleShape2D" id="CircleShape2D_uvava"]
+radius = 32.0
 
-[node name="Music" type="AudioStreamPlayer" parent="."]
-unique_name_in_owner = true
-stream = ExtResource("2_bfv4j")
+[sub_resource type="CircleShape2D" id="CircleShape2D_y0gde"]
+radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pido4"]
+radius = 32.0156
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mhlav"]
+radius = 32.1403
+
+[node name="FrogGame" type="Node2D"]
+script = ExtResource("1_hsu82")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+visible = false
+position = Vector2(320, 240)
+tile_set = SubResource("TileSet_ryvvy")
+
+[node name="SFX" type="Node2D" parent="."]
+
+[node name="SFXJump" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("2_lyuhc")
+volume_db = -16.0
+bus = &"SFX"
+
+[node name="SFXClearStage" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("3_066hb")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="SFXWinGame" type="AudioStreamPlayer" parent="SFX"]
+stream = ExtResource("4_c2ukq")
+volume_db = -4.0
+bus = &"SFX"
+
+[node name="MainLoopTheme" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("2_jdfpy")
+autoplay = true
+bus = &"Music"
+
+[node name="RainForestTheme" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v3fab")
 volume_db = -5.0
 autoplay = true
 bus = &"Music"
 
-[node name="MusicTimer" type="Timer" parent="Music"]
-wait_time = 3.0
-one_shot = true
+[node name="Panels" type="VBoxContainer" parent="."]
+offset_right = 640.0
+offset_bottom = 600.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -1
-offset_left = -11.0
-offset_top = -12.0
-offset_right = 649.0
-offset_bottom = 649.0
+[node name="StatusBar" type="Control" parent="Panels"]
+custom_minimum_size = Vector2(0, 116)
+layout_mode = 2
+mouse_filter = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panels/StatusBar"]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="Panels/StatusBar/CanvasLayer"]
+offset_left = -14.0
+offset_top = -8.0
+offset_right = 655.0
+offset_bottom = 100.0
+color = Color(0.115557, 0.148241, 0.234058, 1)
+
+[node name="NoLily" type="Node2D" parent="Panels/StatusBar"]
+unique_name_in_owner = true
+
+[node name="No0" parent="Panels/StatusBar/NoLily" instance=ExtResource("5_s8uky")]
+unique_name_in_owner = true
+position = Vector2(576, 48)
+
+[node name="No1" parent="Panels/StatusBar/NoLily" instance=ExtResource("5_s8uky")]
+unique_name_in_owner = true
+position = Vector2(608, 48)
+
+[node name="LilypadIcon" type="Sprite2D" parent="Panels/StatusBar"]
+position = Vector2(520, 44)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_an3nc")
+
+[node name="NoClock" type="Node2D" parent="Panels/StatusBar"]
+unique_name_in_owner = true
+position = Vector2(56, 0)
+
+[node name="No2" parent="Panels/StatusBar/NoClock" instance=ExtResource("5_s8uky")]
+unique_name_in_owner = true
+position = Vector2(344, 48)
+
+[node name="No3" parent="Panels/StatusBar/NoClock" instance=ExtResource("5_s8uky")]
+unique_name_in_owner = true
+position = Vector2(376, 48)
+
+[node name="No4" parent="Panels/StatusBar/NoClock" instance=ExtResource("5_s8uky")]
+unique_name_in_owner = true
+position = Vector2(408, 48)
+
+[node name="Clock" type="Sprite2D" parent="Panels/StatusBar"]
+position = Vector2(356, 46)
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_slq3t")
+
+[node name="Round" type="Label" parent="Panels/StatusBar"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 84.0
+offset_top = 16.0
+offset_right = 244.0
+offset_bottom = 80.0
+theme_override_fonts/font = SubResource("FontFile_yu4t5")
+theme_override_font_sizes/font_size = 64
+text = "Round"
+
+[node name="No5" parent="Panels/StatusBar/Round" instance=ExtResource("5_s8uky")]
+position = Vector2(184, 32)
+
+[node name="No6" parent="Panels/StatusBar/Round" instance=ExtResource("5_s8uky")]
+visible = false
+position = Vector2(216, 32)
+
+[node name="Game" type="Control" parent="Panels"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 480)
+layout_mode = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Panels/Game"]
+layer = -2
+
+[node name="ColorRect" type="ColorRect" parent="Panels/Game/CanvasLayer"]
+offset_left = -16.0
+offset_top = 86.0
+offset_right = 658.0
+offset_bottom = 651.0
 mouse_filter = 2
 color = Color(0.113725, 0.14902, 0.235294, 1)
 
-[node name="Title" type="Node2D" parent="."]
+[node name="ColorRect2" type="ColorRect" parent="Panels/Game/CanvasLayer"]
+offset_left = 4.0
+offset_top = 86.0
+offset_right = 636.0
+offset_bottom = 596.0
+mouse_filter = 2
+color = Color(0.486275, 0.603922, 0.67451, 1)
+
+[node name="Frog" parent="Panels/Game" instance=ExtResource("1_vsc66")]
+unique_name_in_owner = true
+z_index = 5
+position = Vector2(288, 150)
+
+[node name="PreviewLilypad" type="AnimatedSprite2D" parent="Panels/Game"]
+unique_name_in_owner = true
+position = Vector2(-67, -79)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_8juv8")
+
+[node name="blink_timer" type="Timer" parent="Panels/Game/PreviewLilypad"]
+wait_time = 0.15
+
+[node name="blink_timer2" type="Timer" parent="Panels/Game/PreviewLilypad"]
+wait_time = 0.15
+
+[node name="JumpTimer" type="Timer" parent="Panels/Game"]
+unique_name_in_owner = true
+wait_time = 0.4
+
+[node name="LilyTimer" type="Timer" parent="Panels/Game"]
+unique_name_in_owner = true
+wait_time = 0.15
+one_shot = true
+
+[node name="GameTimer" type="Timer" parent="."]
 unique_name_in_owner = true
 
-[node name="ButtonMusic" parent="Title" instance=ExtResource("5_ev87v")]
+[node name="EndRoundTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-position = Vector2(52, 588)
+wait_time = 0.25
 
-[node name="Area2D" type="Area2D" parent="Title/ButtonMusic"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Title/ButtonMusic/Area2D"]
-position = Vector2(-2, -2)
-shape = SubResource("CircleShape2D_sftx4")
-
-[node name="ButtonSFX" parent="Title" instance=ExtResource("5_ev87v")]
+[node name="RoundClear" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(140, 588)
+visible = false
+z_index = 18
 
-[node name="Area2D" type="Area2D" parent="Title/ButtonSFX"]
+[node name="RoundClearLabel3" type="Label" parent="RoundClear"]
+offset_left = 136.0
+offset_top = 272.0
+offset_right = 520.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("9_kh4dt")
+theme_override_font_sizes/font_size = 64
+text = "Round Clear!"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Title/ButtonSFX/Area2D"]
-position = Vector2(-2, -2)
-shape = SubResource("CircleShape2D_sftx4")
-
-[node name="gold" type="Label" parent="Title"]
-offset_left = 124.0
-offset_right = 508.0
-offset_bottom = 195.0
-theme_override_fonts/font = ExtResource("1_64f08")
-theme_override_font_sizes/font_size = 96
-text = "  Lily
-the Frog"
-
-[node name="menu_cyan" type="Label" parent="Title"]
+[node name="RoundClearLabel4" type="Label" parent="RoundClear"]
 offset_left = 132.0
-offset_top = 268.0
-offset_right = 484.0
-offset_bottom = 466.0
-theme_override_fonts/font = SubResource("FontFile_yu4t5")
+offset_top = 272.0
+offset_right = 516.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("9_kh4dt")
 theme_override_font_sizes/font_size = 64
-text = "   Start!
-How to play
-  Credits"
+text = "Round Clear!"
 
-[node name="menu_gold_start" type="Label" parent="Title"]
-unique_name_in_owner = true
-offset_left = 196.0
-offset_top = 268.0
-offset_right = 444.0
-offset_bottom = 332.0
-mouse_filter = 0
-theme_override_fonts/font = ExtResource("1_64f08")
+[node name="RoundClearLabel2" type="Label" parent="RoundClear"]
+offset_left = 136.0
+offset_top = 272.0
+offset_right = 520.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("9_hme2c")
 theme_override_font_sizes/font_size = 64
-text = " Start!"
-visible_characters = 0
-visible_ratio = 0.0
-metadata/_edit_use_anchors_ = true
+text = "Round Clear!"
 
-[node name="menu_gold_howto" type="Label" parent="Title"]
-unique_name_in_owner = true
+[node name="RoundClearLabel" type="Label" parent="RoundClear"]
 offset_left = 132.0
-offset_top = 335.0
-offset_right = 484.0
-offset_bottom = 399.0
-mouse_filter = 0
-theme_override_fonts/font = ExtResource("1_64f08")
+offset_top = 272.0
+offset_right = 516.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("9_pjlc2")
 theme_override_font_sizes/font_size = 64
-text = "How to play"
-visible_characters = 0
-visible_ratio = 0.0
+text = "Round Clear!"
 
-[node name="menu_gold_credits" type="Label" parent="Title"]
+[node name="RoundClearLabelRed" type="Label" parent="RoundClear"]
+visible = false
+offset_left = 132.0
+offset_top = 272.0
+offset_right = 516.0
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("15_7lq38")
+theme_override_font_sizes/font_size = 64
+text = "Round Clear!"
+
+[node name="MenuButton" parent="." instance=ExtResource("12_f3bnq")]
 unique_name_in_owner = true
-offset_left = 164.0
-offset_top = 402.0
-offset_right = 452.0
-offset_bottom = 466.0
-mouse_filter = 0
-theme_override_fonts/font = ExtResource("1_64f08")
-theme_override_font_sizes/font_size = 64
-text = " Credits"
-visible_characters = 0
-visible_ratio = 0.0
+position = Vector2(46, 52)
 
-[node name="made_by" type="Label" parent="Title"]
-offset_left = 228.0
-offset_top = 560.0
-offset_right = 628.0
-offset_bottom = 592.0
-theme_override_fonts/font = SubResource("FontFile_yu4t5")
-theme_override_font_sizes/font_size = 32
-text = "A game by a dish of pasta"
+[node name="Area2D" type="Area2D" parent="MenuButton"]
 
-[node name="made_by2" type="Label" parent="Title"]
-offset_left = 388.0
-offset_top = 560.0
-offset_right = 628.0
-offset_bottom = 592.0
-theme_override_fonts/font = ExtResource("3_jkaqy")
-theme_override_font_sizes/font_size = 32
-text = "a dish of pasta"
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MenuButton/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_uvava")
 
-[node name="Timer" type="Timer" parent="Title"]
-wait_time = 4.0
+[node name="PauseMenu" type="Node2D" parent="."]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+z_index = 19
+script = ExtResource("16_rakxa")
+
+[node name="Timer" type="Timer" parent="PauseMenu"]
+wait_time = 0.3
 autostart = true
 
-[node name="HowTo" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
+[node name="ColorRect" type="ColorRect" parent="PauseMenu"]
+offset_left = 120.0
+offset_top = 140.0
+offset_right = 520.0
+offset_bottom = 464.0
+mouse_filter = 2
+color = Color(0.113725, 0.14902, 0.235294, 1)
 
-[node name="gold" type="Label" parent="HowTo"]
-offset_left = 136.0
-offset_right = 488.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("1_64f08")
-theme_override_font_sizes/font_size = 64
-text = "How to play"
+[node name="PauseLabel" type="Label" parent="PauseMenu"]
+offset_left = 248.0
+offset_top = 152.0
+offset_right = 392.0
+offset_bottom = 200.0
+theme_override_fonts/font = ExtResource("9_pjlc2")
+theme_override_font_sizes/font_size = 48
+text = "Paused"
 
-[node name="cyan" type="Label" parent="HowTo"]
-offset_left = 8.0
-offset_right = 648.0
-offset_bottom = 600.0
-theme_override_fonts/font = SubResource("FontFile_yu4t5")
-theme_override_font_sizes/font_size = 32
-text = "
+[node name="ButtonPlay" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(234, 280)
 
-Guide Lily to eat all the flies,
-by placing lilypads for her to move
-across the pond.
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonPlay"]
 
-You must eat them all, before the time
-runs out, and Lily feels too hungry to
-have a good day.
-
-There are 10 rounds of increasing
-difficulty.
-Every 3 seconds, you gain one extra
-lilypad.
-If you complete a round with time
-to spare, you gain even more
-lilypads!"
-
-[node name="red" type="Label" parent="HowTo"]
-offset_left = 8.0
-offset_right = 648.0
-offset_bottom = 600.0
-theme_override_fonts/font = ExtResource("3_jkaqy")
-theme_override_font_sizes/font_size = 32
-text = "
-
-                          flies
-           lilypads
-
-
-                                  time
-runs out
-
-
-          10 rounds
-
-      3
-
-                             time
-to spare"
-
-[node name="Credits" type="Node2D" parent="."]
-unique_name_in_owner = true
-visible = false
-
-[node name="gold" type="Label" parent="Credits"]
-offset_left = 200.0
-offset_right = 424.0
-offset_bottom = 64.0
-theme_override_fonts/font = ExtResource("1_64f08")
-theme_override_font_sizes/font_size = 64
-text = "Credits"
-
-[node name="cyan" type="Label" parent="Credits"]
-offset_left = 8.0
-offset_right = 648.0
-offset_bottom = 600.0
-theme_override_fonts/font = ExtResource("2_psoy3")
-theme_override_font_sizes/font_size = 32
-text = "
-
-Sprites, font, UI and game logic
-are all made by me.
-
-The color palette is an adaptation of
-CORAL 4 by Yousurname (lospec.com)
-
-Rainforest loop and frog jump SFX are
-part of the No-Code Gamedev Bundle.
-
-Software and resources used:
-beepbox.co - music themes, stage clear
-sfxr.me - other sfx
-Godot - game logic and design
-Aseprite - assets and fonts
-"
-
-[node name="red" type="Label" parent="Credits"]
-offset_left = 8.0
-offset_right = 648.0
-offset_bottom = 600.0
-theme_override_fonts/font = ExtResource("3_jkaqy")
-theme_override_font_sizes/font_size = 32
-text = "
-
-
-
-
-
-CORAL 4    Yousurname
-
-
-            No-Code Gamedev Bundle
-
-
-beepbox.co
-sfxr.me
-Godot
-Aseprite"
-
-[node name="ButtonBack" parent="." instance=ExtResource("5_ev87v")]
-unique_name_in_owner = true
-visible = false
-z_index = -1
-position = Vector2(588, 548)
-
-[node name="Area2D2" type="Area2D" parent="ButtonBack"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ButtonBack/Area2D2"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="PauseMenu/ButtonPlay/Area2D"]
 position = Vector2(-2, -2)
-shape = SubResource("CircleShape2D_vdm1o")
+shape = SubResource("CircleShape2D_uvava")
 
-[node name="FrogSprite" type="AnimatedSprite2D" parent="."]
+[node name="ButtonRestart" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(410, 280)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonRestart"]
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="PauseMenu/ButtonRestart/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_uvava")
+
+[node name="ButtonMusic" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(194, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonMusic"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonMusic/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_y0gde")
+
+[node name="ButtonSFX" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(274, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonSFX"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonSFX/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_pido4")
+
+[node name="ButtonQuit" parent="PauseMenu" instance=ExtResource("12_f3bnq")]
+position = Vector2(410, 392)
+
+[node name="Area2D" type="Area2D" parent="PauseMenu/ButtonQuit"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PauseMenu/ButtonQuit/Area2D"]
+position = Vector2(-2, -2)
+shape = SubResource("CircleShape2D_mhlav")
+
+[node name="StatusBarBorder" type="Node2D" parent="."]
+
+[node name="ColorRect2" type="ColorRect" parent="StatusBarBorder"]
+z_index = 21
+offset_left = 4.0
+offset_top = 92.0
+offset_right = 636.0
+offset_bottom = 96.0
+color = Color(1, 0.815686, 0.643137, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="StatusBarBorder"]
+z_index = 21
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 8.0
+color = Color(1, 0.815686, 0.643137, 1)
+
+[node name="ColorRect4" type="ColorRect" parent="StatusBarBorder"]
+z_index = 21
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 8.0
+offset_bottom = 96.0
+color = Color(1, 0.815686, 0.643137, 1)
+
+[node name="ColorRect5" type="ColorRect" parent="StatusBarBorder"]
+z_index = 21
+offset_left = 632.0
+offset_top = 4.0
+offset_right = 636.0
+offset_bottom = 96.0
+color = Color(1, 0.815686, 0.643137, 1)
+
+[node name="Cursor" parent="." instance=ExtResource("7_tkwux")]
 unique_name_in_owner = true
-position = Vector2(584, 48)
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_38vhx")
-animation = &"lucky"
-autoplay = "default"
+z_index = 25
+position = Vector2(-75, 92)
 
-[node name="Cursor" parent="." instance=ExtResource("7_2ajbx")]
-unique_name_in_owner = true
-position = Vector2(-53, 13)
-
-[connection signal="finished" from="Music" to="." method="on_music_finished"]
-[connection signal="timeout" from="Music/MusicTimer" to="." method="can_restart_music"]
-[connection signal="input_event" from="Title/ButtonMusic/Area2D" to="." method="on_toggle_music"]
-[connection signal="input_event" from="Title/ButtonSFX/Area2D" to="." method="on_toggle_sfx"]
-[connection signal="gui_input" from="Title/menu_gold_start" to="." method="start_onclick"]
-[connection signal="mouse_entered" from="Title/menu_gold_start" to="." method="_on_menu_gold_start_mouse_entered"]
-[connection signal="mouse_exited" from="Title/menu_gold_start" to="." method="_on_menu_gold_start_mouse_exited"]
-[connection signal="gui_input" from="Title/menu_gold_howto" to="." method="howto_onclick"]
-[connection signal="mouse_entered" from="Title/menu_gold_howto" to="." method="_on_menu_gold_howto_mouse_entered"]
-[connection signal="mouse_exited" from="Title/menu_gold_howto" to="." method="_on_menu_gold_howto_mouse_exited"]
-[connection signal="gui_input" from="Title/menu_gold_credits" to="." method="credits_onclick"]
-[connection signal="mouse_entered" from="Title/menu_gold_credits" to="." method="_on_menu_gold_credits_mouse_entered"]
-[connection signal="mouse_exited" from="Title/menu_gold_credits" to="." method="_on_menu_gold_credits_mouse_exited"]
-[connection signal="timeout" from="Title/Timer" to="." method="_on_timer_timeout"]
-[connection signal="input_event" from="ButtonBack/Area2D2" to="." method="on_button_clicked"]
-[connection signal="animation_finished" from="FrogSprite" to="." method="on_jump_ani_finished"]
+[connection signal="clear_cell" from="Panels/Game/Frog" to="." method="on_clear_cell"]
+[connection signal="done_catching" from="Panels/Game/Frog" to="." method="on_frog_done_catching"]
+[connection signal="timeout" from="Panels/Game/PreviewLilypad/blink_timer" to="." method="blink_preview"]
+[connection signal="timeout" from="Panels/Game/PreviewLilypad/blink_timer2" to="." method="blink_lilypad_count"]
+[connection signal="timeout" from="Panels/Game/JumpTimer" to="." method="on_try_jump"]
+[connection signal="timeout" from="Panels/Game/LilyTimer" to="." method="on_lilypad_ready"]
+[connection signal="timeout" from="EndRoundTimer" to="." method="round_timer_tick"]
+[connection signal="input_event" from="MenuButton/Area2D" to="." method="on_menu_button_clicked"]
+[connection signal="timeout" from="PauseMenu/Timer" to="PauseMenu" method="on_timer_tick"]
+[connection signal="input_event" from="PauseMenu/ButtonPlay/Area2D" to="." method="on_play_button_clicked"]
+[connection signal="input_event" from="PauseMenu/ButtonRestart/Area2D" to="." method="on_restart_button_clicked"]
+[connection signal="input_event" from="PauseMenu/ButtonMusic/Area2D" to="PauseMenu" method="on_toggle_music"]
+[connection signal="input_event" from="PauseMenu/ButtonSFX/Area2D" to="PauseMenu" method="on_toggle_sfx"]
+[connection signal="input_event" from="PauseMenu/ButtonQuit/Area2D" to="PauseMenu" method="main_menu_onclick"]

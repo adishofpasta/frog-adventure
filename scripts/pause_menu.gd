@@ -26,7 +26,7 @@ func _ready():
 func _input(event):
 	if event.is_action_pressed("esc_click"):
 		get_tree().paused = false
-		get_tree().change_scene_to_file("res://main_menu.tscn")
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
 func on_timer_tick():
@@ -48,7 +48,7 @@ func main_menu_onclick(_viewport, event, _shape_idx):
 
 func change_scene():
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://main_menu.tscn")
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 
 func on_toggle_music(_viewport, event, _shape_idx):

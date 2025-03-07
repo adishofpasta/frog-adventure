@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://bbjx5dv6uj6t1"]
 
-[ext_resource type="Script" path="res://number.gd" id="1_f4oqm"]
+[ext_resource type="Script" uid="uid://d352nmqkq0aa2" path="res://scripts/number.gd" id="1_f4oqm"]
 [ext_resource type="Texture2D" uid="uid://cubid3seem6pv" path="res://canvas/numbers.png" id="1_kmhlc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r8apl"]

@@ -14,8 +14,8 @@ extends Node2D
 @onready var jump_timer = %JumpTimer
 @onready var game_timer = %GameTimer
 @onready var round_timer = %EndRoundTimer
-@onready var blink_timer = $PreviewLilypad/blink_timer
-@onready var blink_timer_2 = $PreviewLilypad/blink_timer2
+@onready var blink_timer = preview_lilypad.get_child(0)
+@onready var blink_timer_2 = preview_lilypad.get_child(1)
 @onready var sfx_jump = $SFX/SFXJump
 @onready var sfx_clear_stage = $SFX/SFXClearStage
 @onready var sfx_win_game = $SFX/SFXWinGame
@@ -33,8 +33,8 @@ var grid = Array()
 # Multi-purpose cell-sized vector, for placement help
 const cell = Vector2(w_cell, h_cell)
 # The objects for placement
-const lilypad = preload("res://lilypad.tscn")
-const fly = preload("res://fly.tscn")
+const lilypad = preload("res://scenes/lilypad.tscn")
+const fly = preload("res://scenes/fly.tscn")
 # Lilypad data: amount and availability
 var lily_available : int = 0
 var lily_this_round = 0
@@ -88,16 +88,16 @@ func _ready():
 
 
 func _process(_delta):
-	var mouse = get_global_mouse_position()
-	if mouse.y >= 110 and round_state == 0:
+	var mouse = game.get_local_mouse_position()
+	if round_state == 0:
 		if has_preview:
 			mouse.x = clamp(mouse.x, 0, w - w_cell)
-			mouse.y = clamp(mouse.y, 120, h + 120 - h_cell)
+			mouse.y = clamp(mouse.y, 0, h - h_cell)
 			var grid_index = (mouse / cell).floor()
 			var cell_center = grid_index * cell + cell / 2
 			preview_lilypad.position = cell_center
 			# Offset of the status bar is equal to 2 extra rows, hence the y - 2
-			var index_raw = grid_index.x + (grid_index.y - 2) * cols
+			var index_raw = grid_index.x + grid_index.y * cols
 			if grid[index_raw] == 0:
 				preview_lilypad.frame = 0
 			else:
@@ -110,7 +110,6 @@ func _process(_delta):
 					preview_lilypad.visible = false
 					var new_lilypad = lilypad.instantiate()
 					new_lilypad.position = cell_center
-					new_lilypad.position.y -= h_cell * 2
 					game.add_child(new_lilypad)
 					new_lilypad.add_to_group("lilypads")
 					grid[index_raw] = 1
@@ -407,7 +406,7 @@ func blink_message():
 		clear_msg.visible = true
 		if clear_delay <= -2.0:
 			if round_state > 1:
-				get_tree().change_scene_to_file("res://main_menu.tscn")
+				get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 			else:
 				clear_msg.visible = false
 				round_timer.stop()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctpm7uq7p1i1s"]
 
-[ext_resource type="PackedScene" uid="uid://nbhuycy7ei5i" path="res://fly_sprite.tscn" id="1_e5ub8"]
+[ext_resource type="PackedScene" uid="uid://nbhuycy7ei5i" path="res://scenes/fly_sprite.tscn" id="1_e5ub8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gn46w"]
 radius = 14.0357

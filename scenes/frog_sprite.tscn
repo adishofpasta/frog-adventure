@@ -1,6 +1,6 @@
 [gd_scene load_steps=20 format=3 uid="uid://dqo6wkvvlc6h0"]
 
-[ext_resource type="Script" path="res://frog_sprite.gd" id="1_la603"]
+[ext_resource type="Script" uid="uid://cfvekgkxg8req" path="res://scripts/frog_sprite.gd" id="1_la603"]
 [ext_resource type="Texture2D" uid="uid://cwnn520177idq" path="res://canvas/frog_sheet.png" id="2_ia6cj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_deh8k"]

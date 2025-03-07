@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://7wvvqfe5r5e8"]
 
-[ext_resource type="Script" path="res://button.gd" id="1_tfftt"]
+[ext_resource type="Script" uid="uid://cdekwddcnf52r" path="res://scripts/button.gd" id="1_tfftt"]
 [ext_resource type="FontFile" uid="uid://il545vcsxw34" path="res://canvas/font/small_font_cyan.png" id="2_qnd1b"]
 [ext_resource type="Texture2D" uid="uid://dkptvngyafef7" path="res://canvas/ui_sheet.png" id="3_ya7e0"]
 

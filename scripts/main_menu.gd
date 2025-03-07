@@ -98,7 +98,7 @@ func credits_onclick(event):
 func start_onclick(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			get_tree().change_scene_to_file("res://game.tscn")
+			get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 
 func on_music_finished():

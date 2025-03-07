@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bb3c305h4bq15"]
 
-[ext_resource type="Script" path="res://frog.gd" id="1_h5ny0"]
-[ext_resource type="PackedScene" uid="uid://dqo6wkvvlc6h0" path="res://frog_sprite.tscn" id="2_duqlj"]
+[ext_resource type="Script" uid="uid://7qp3i8jkmjvn" path="res://scripts/frog.gd" id="1_h5ny0"]
+[ext_resource type="PackedScene" uid="uid://dqo6wkvvlc6h0" path="res://scenes/frog_sprite.tscn" id="2_duqlj"]
 [ext_resource type="AudioStream" uid="uid://opaxiis5mpbq" path="res://sfx/lick2.wav" id="2_vcbpq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yqcoj"]
